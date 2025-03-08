@@ -1,0 +1,69 @@
+<button class="add-course-button" (click)="openAddModal('course')">Add course</button>
+
+@for(course of courses; track $index){
+<div class="course-card">
+    <p>{{course.title}}</p>
+    <p>{{course.description}}</p>
+    <button (click)="openEditModal(course,'course')">Edit</button>
+    <button (click)="deleteCourse(course.id)">Delete</button>
+    <button (click)="showLessons(course)">Manage lessons</button>
+
+    @if(course.showLessons)
+    {
+    <button (click)="openAddModal('lesson',course)">Add lesson</button>
+    <div>
+        @for (lesson of course.lessons; track lesson.title) {
+        <div class="lesson-card">
+            <p>{{lesson.title}}</p>
+            <p>{{lesson.content}}</p>
+            <button (click)="openEditModal(course,'lesson',lesson)">Edit</button>
+            <button (click)="deleteLesson(lesson.id,course.id)">Delete</button>
+        </div>
+        }
+    </div>
+    }
+
+</div>
+}
+
+<div #addModal class="modal-overlay">
+    <div class="modal-content">
+        <h2>{{ formType === 'course' ? 'הוספת קורס' : 'הוספת שיעור' }}</h2>
+        <input [(ngModel)]="title" type="text" placeholder="title" />
+        @if(formType === 'course'){
+        <input [(ngModel)]="description" type="text" placeholder="description" />
+        }
+        @else {
+        <input [(ngModel)]="content" type="text" placeholder="content">
+        }
+        <div class="buttons">
+            @if(formType === 'course'){
+            <button (click)="addCourse()">Add</button> }
+            @else {
+            <button (click)="addLesson()">Add</button>
+            }
+            <button (click)="closeAddModal()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div #editModal class="modal-overlay">
+    <div class="modal-content">
+        <h2>{{ formType === 'course' ? 'עריכת קורס' : 'עריכת שיעור' }}</h2>
+        <input [(ngModel)]="title" type="text" placeholder="title" />
+        @if(formType === 'course'){
+        <input [(ngModel)]="description" type="text" placeholder="description" />
+        }
+        @else{
+        <input [(ngModel)]="content" type="text" placeholder="content">
+        }
+        <div class="buttons">
+            @if(formType === 'course'){
+            <button (click)="updateCourse()">save</button> }
+            @else{
+            <button (click)="updateLesson()">save</button>
+            }
+            <button (click)="closeEditModal()">cancel</button>
+        </div>
+    </div>
+</div>

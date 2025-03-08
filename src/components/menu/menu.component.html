@@ -1,0 +1,32 @@
+<nav class="navbar mat-elevation-z4">
+    <mat-toolbar color="primary">
+        <div class="nav-links">
+            <a mat-button routerLink="" routerLinkActive="active" class="nav-item home">Home</a>
+
+            @if(!getFromSessionStorage('token')) {
+            <a mat-button routerLink="sign-up" routerLinkActive="active" class="nav-item sign-up">Sign-up</a>
+            <a mat-button routerLink="login" routerLinkActive="active" class="nav-item sign-in">Sign-in</a>
+            }
+
+            <a mat-button routerLink="courses" routerLinkActive="active" class="nav-item courses">Courses</a>
+
+            @if(getUserRole() === 'teacher') {
+            <a mat-button routerLink="courseManage" routerLinkActive="active"
+                class="nav-item courses-manage">CoursesManage</a>
+            }
+
+            <a mat-button routerLink="myCourses" routerLinkActive="active" class="nav-item my-courses">MyCourses</a>
+
+            @if(getFromSessionStorage('token')) {
+            <button mat-button [matMenuTriggerFor]="menu" class="nav-item logout">Logout</button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="Logout()">Logout</button>
+            </mat-menu>
+            }
+        </div>
+    </mat-toolbar>
+</nav>
+
+<div class="content">
+    <router-outlet></router-outlet>
+</div>
