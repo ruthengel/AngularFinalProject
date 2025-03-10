@@ -8,6 +8,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    background-color:rgba(167, 235, 229, 0.2);
 }
 
 .mat-button {

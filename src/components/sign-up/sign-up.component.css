@@ -4,7 +4,7 @@
     align-items: center;
     height: 100vh;
     overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(167, 235, 229, 0.2);
 }
 
 #eye {
@@ -12,19 +12,17 @@
     cursor: pointer;
 }
 
-/* 2. עיצוב כרטיס בצורה קטנה יותר ומרכזית */
 .register-card {
     width: 400px;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     animation: slideIn 0.5s ease-in-out;
-    background-color: white;
+    background-color: rgba(167, 235, 229, 0.2);
     margin-top: 5%;
     margin-left: 36%;
 }
 
-/* 3. אנימציה לפתיחת ה-Dialog בצורה רכה */
 @keyframes slideIn {
     from {
         opacity: 0;
@@ -37,7 +35,6 @@
     }
 }
 
-/* 4. עיצוב כותרת הכרטיס */
 .mat-card-title {
     font-size: 14px;
     text-align: center;
@@ -45,7 +42,6 @@
     color: #70b2b1;
 }
 
-/* 5. עיצוב שדות הקלט */
 .mat-form-field {
     width: 100%;
     margin-top: 10px;
@@ -56,7 +52,6 @@
     padding: 10px;
 }
 
-/* 6. עיצוב שגיאות */
 .mat-error {
     color: red;
     font-size: 5px;
